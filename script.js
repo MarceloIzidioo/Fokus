@@ -89,12 +89,16 @@ function iniciarOuPausar() {
     if(intervaloId){
         audioPausa.play();
         zerar();
+        habilitarBotoes();
         return;
     }
     audioPlay.play()
     intervaloId = setInterval(contagemRegressiva, 1000);
     iniciarOuPausarBt.textContent = "Pausar";
     iniciarOuPausarIco.setAttribute('src', '/imagens/pause.png')
+
+    desabilitarBotoes();
+    
 }
 
 function zerar() {
@@ -111,3 +115,16 @@ function mostrarTempo() {
 }
 
 mostrarTempo();
+
+//Funcionalidade adicionada com auxilio do chat GPT
+function desabilitarBotoes() {
+    botoes.forEach(botao => {
+        botao.setAttribute('disabled', 'true');
+    });
+}
+
+function habilitarBotoes() {
+    botoes.forEach(botao => {
+        botao.removeAttribute('disabled');
+    });
+}
